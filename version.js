@@ -4,7 +4,7 @@ let arguments = process.argv;
 
 if (arguments[2] != null || arguments[2] != undefined) {
     const vssPath = 'vss-extension.json';
-    const taskPath = 'packagediff/task.json';
+    const taskPath = 'licensegenerator/task.json';
 
     let vssFile = fs.readFileSync(vssPath);
     let taskFile = fs.readFileSync(taskPath);
