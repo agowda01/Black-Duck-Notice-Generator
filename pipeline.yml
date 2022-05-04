@@ -1,0 +1,43 @@
+trigger:
+- none
+
+pool:
+  vmImage: 'windows-2022'
+
+steps:
+- task: npmAuthenticate@0
+  inputs:
+    workingFile: .npmrc
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Use Node 10'
+
+- script: npm i -g tfx-cli
+  displayName: 'Install TFX-CLI'
+
+- script: node version.js $(taskVersion)
+  displayName: 'Set Task Version'
+
+- task: Npm@1
+  displayName: 'Install Packages'
+  inputs:
+    command: custom
+    customCommand: 'run install'
+
+- task: Npm@1
+  displayName: 'Build Package'
+  inputs:
+    command: custom
+    customCommand: 'run build'
+
+- task: Npm@1
+  displayName: 'Create Package'
+  inputs:
+    command: custom
+    customCommand: 'run package'
+
+- publish: 'ProductTech.alle-package-diff-$(taskVersion).vsix'
+  artifact: task
+  displayName: 'Publish Task'

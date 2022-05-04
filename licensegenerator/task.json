@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "4b6bc620-40ac-41a9-a27a-cde89706439b",
+  "name": "alle-bd-license-generator",
+  "friendlyName": "Alle BlackDuck Notice Generator",
+  "description": "Simple generation of Black Duck notice file",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "author": "ProductTech",
+  "version": {
+    "Major": 0,
+    "Minor": 0,
+    "Patch": 1
+  },
+  "instanceNameFormat": "Generate Notice File",
+  "inputs": [
+    {
+      "name": "blackduckconnection",
+      "type": "connectedService:SynopsysBlackDuck",
+      "label": "Service connection name for Black Duck",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "connection string name"
+    },
+    {
+      "name": "blackducktoken",
+      "type": "string",
+      "label": "API token for Black Duck",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "black duck token"
+    },
+    {
+      "name": "projectName",
+      "type": "string",
+      "label": "Black Duck Project Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Name of Black Duck project"
+    },
+    {
+      "name": "versionName",
+      "type": "string",
+      "label": "Black Duck Version Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Name of Black Duck version"
+    },
+    {
+      "name": "noticeFilePath",
+      "type": "string",
+      "label": "Path to notice file",
+      "defaultValue": "../license.txt",
+      "required": true,
+      "helpMarkDown": "Path for writing notice file"
+    }
+  ],
+  "execution": {
+    "Node10": {
+      "target": "./dist/index.js"
+    }
+  }
+}
