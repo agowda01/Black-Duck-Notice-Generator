@@ -20,11 +20,8 @@ steps:
 - script: node version.js $(taskVersion)
   displayName: 'Set Task Version'
 
-- task: Npm@1
+- script: cd licensegenerator && npm install
   displayName: 'Install Packages'
-  inputs:
-    command: custom
-    customCommand: 'run install'
 
 - task: Npm@1
   displayName: 'Build Package'
