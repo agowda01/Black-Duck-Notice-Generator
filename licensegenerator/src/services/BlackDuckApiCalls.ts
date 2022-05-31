@@ -125,7 +125,7 @@ export class BlackDuckAPICalls {
     async request(options: IRequestOptions, data?:any): Promise<any> {
         return new Promise((resolve, reject) => {
             const req = https.request(options, (res) => {
-                if (res.statusCode > 400 && res.statusCode < 500)
+                if (res.statusCode > 400 && res.statusCode <= 500)
                 {
                     return reject(new Error(`status code ${res.statusCode}`));
                 }
@@ -165,7 +165,7 @@ export class BlackDuckAPICalls {
     async getRequest(url: string, options: IRequestOptions, errorProcess?: Function): Promise<any> {
         return new Promise((resolve, reject) => {
             const req = https.get(url, options, (res) => {
-                if (res.statusCode > 200 && res.statusCode < 300)
+                if (res.statusCode > 400 && res.statusCode <= 500)
                 {
                     return reject(new Error(`status code ${res.statusCode}`));
                 }

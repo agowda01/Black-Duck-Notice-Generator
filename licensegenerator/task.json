@@ -9,8 +9,8 @@
   "author": "ProductTech",
   "version": {
     "Major": 0,
-    "Minor": 0,
-    "Patch": 1
+    "Minor": 1,
+    "Patch": 10
   },
   "instanceNameFormat": "Generate Notice File",
   "inputs": [
@@ -51,7 +51,7 @@
       "type": "string",
       "label": "Path to notice file",
       "defaultValue": "oss-notice-file.txt",
-      "required": true,
+      "required": false,
       "helpMarkDown": "Path for writing notice file"
     },
     {

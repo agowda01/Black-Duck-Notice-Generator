@@ -55,7 +55,7 @@ stages:
           --detect.bom.aggregate.name="$(Blackduck_Project)-$(Blackduck_Version)-BOM"
           --detect.code.location.name="$(Blackduck_Project)-$(Blackduck_Version)-Scan"
           --detect.blackduck.signature.scanner.snippet.matching=SNIPPET_MATCHING
-          --detect.wait.for.results
+          --detect.wait.for.results=true
           --detect.scan.output.path=$(Agent.TempDirectory)/bdscan-$(Build.SourceVersion)
           --detect.bdio.output.path=$(Agent.TempDirectory)/bdbdio-$(Build.SourceVersion)
           --detect.npm.include.dev.dependencies=true
@@ -69,13 +69,15 @@ stages:
       inputs:
         targetPath: '$(System.DefaultWorkingDirectory)/$(Blackduck_NoticeFileName)'
         artifact: licensefile
-
-    # - task: alle-bd-license-generator@0
+    
+    # - task: noticegenerator@0
     #   inputs:
-    #     blackduckconnection: 'blackduck-service-token'
-    #     projectName: '$(Blackduck_Project)'
-    #     versionName: '$(Blackduck_Version)'
-    #     noticeFilePath: '$(System.DefaultWorkingDirectory)'
+    #     blackduckconnection: blackduck-service-token
+    #     projectName: $(Blackduck_Project)
+    #     versionName: $(Blackduck_Version)
+    #     noticeFilePath: '$(System.DefaultWorkingDirectory)/third-party-licenses.txt'
+    #     generateNoticeFile: true
+    #     getLatestNoticeFile: true
 
     - task: PackageAzureDevOpsExtension@3
       displayName: 'Package Extension: Notice Generator'

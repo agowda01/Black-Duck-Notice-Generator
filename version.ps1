@@ -34,4 +34,3 @@ if ($ExtensionVersion -gt $MarketPlaceVersion) {
 }else {
     Write-Host "Version left unchanged"
 }
-
