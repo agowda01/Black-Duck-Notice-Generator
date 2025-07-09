@@ -68,7 +68,8 @@ export class BlackDuckAPICalls {
             port: 443,
             headers: {
                 'Authorization': `Bearer ${_bearerToken}`,
-                'Content-Type': 'application/vnd.blackducksoftware.report-4+json'
+                'Content-Type': 'application/vnd.blackducksoftware.report-5+json',
+                'Accept': 'application/vnd.blackducksoftware.report-5+json'
             },
             method: 'POST',
             hostname: this.baseUrl,
@@ -81,8 +82,9 @@ export class BlackDuckAPICalls {
             reportFormat: 'TEXT',
             locale: 'en_US',
             versionId: versionId,
-            categories: ['COPYRIGHT_TEXT'],
-            reportType: 'VERSION_LICENSE'
+            categories: ['LICENSE_DATA', 'LICENSE_TEXT'],
+            reportType: 'VERSION_LICENSE',
+            includeSubprojects: true
         }
         return await this.request(options, JSON.stringify(requestBody));
     }

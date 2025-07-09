@@ -25,5 +25,6 @@ export interface IBlackDuckReportRequestBody {
     locale: string,
     versionId: string,
     categories: string[],
-    reportType: string
+    reportType: string,
+    includeSubprojects: boolean
 }
