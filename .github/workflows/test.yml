@@ -58,8 +58,8 @@ jobs:
         with:
           blackduck-url: ${{ vars.BLACKDUCK_URL }}
           blackduck-token: ${{ secrets.BLACKDUCK_TOKEN }}
-          project-name: 'TestProject'
-          version-name: 'v1.0.0'
+          project-name: 'IT-Allegion-NA-SW-FO-DevOpsPlatform-TemplateTest'
+          version-name: 'main-CIBuild-angular'
           get-latest-notice-file: 'true'
 
   test-action-env-var:
@@ -86,6 +86,6 @@ jobs:
           BLACKDUCK_TOKEN: ${{ secrets.BLACKDUCK_TOKEN }}
         with:
           blackduck-url: ${{ vars.BLACKDUCK_URL }}
-          project-name: 'TestProject'
-          version-name: 'v1.0.0'
+          project-name: 'IT-Allegion-NA-SW-FO-DevOpsPlatform-TemplateTest'
+          version-name: 'main-CIBuild-angular'
           generate-notice-file: 'true'
